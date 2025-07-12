@@ -4,8 +4,8 @@
 <h1 align="center">YT-Transcript</h1>
 <p align="center">A Dockerized Telegram bot that downloads YouTube videos as MP3 audio and transcribes them using OpenAI Whisper</p>
 <p align="center">
-   <a href="https://github.com/derogab/voicemail/actions/workflows/deploy.yml">
-      <img src="https://github.com/derogab/voicemail/actions/workflows/deploy.yml/badge.svg">
+   <a href="https://github.com/derogab/yt-transcript/actions/workflows/docker-publish.yml">
+      <img src="https://github.com/derogab/yt-transcript/actions/workflows/docker-publish.yml/badge.svg">
    </a>
 </p>
 
@@ -117,4 +117,4 @@ If you like this project or directly benefit from it, please consider buying me 
 💶 [Sponsor on GitHub](https://github.com/sponsors/derogab)
 
 ### Credits
-_Voicemail_ is made with ♥  by [derogab](https://github.com/derogab) and it's released under the [MIT license](./LICENSE).
+_YT-Transcript_ is made with ♥  by [derogab](https://github.com/derogab) and it's released under the [MIT license](./LICENSE).
