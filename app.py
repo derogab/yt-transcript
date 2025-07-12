@@ -233,7 +233,11 @@ Note: The transcription process may take a few minutes depending on the video le
         
         # Start the bot
         logger.info("Starting YouTube Transcriber Bot...")
-        application.run_polling(allowed_updates=Update.ALL_TYPES)
+        try:
+            application.run_polling(drop_pending_updates=True)
+        except Exception as e:
+            logger.error(f"Error starting bot: {e}")
+            raise
 
 def main():
     """Main function."""
