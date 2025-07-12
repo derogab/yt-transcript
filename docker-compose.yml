@@ -1,15 +1,14 @@
 services:
   yt-transcript-app:
     build:
-      context: ..
-      dockerfile: docker/Dockerfile
+      context: .
     image: derogab/yt-transcript-app:latest
     container_name: yt-transcript-app
     restart: unless-stopped
     environment:
       - PYTHONUNBUFFERED=1
     env_file:
-      - ../.env
+      - .env
     networks:
       - yt-transcript-network
 
