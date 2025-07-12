@@ -205,15 +205,31 @@ Note: The transcription process may take a few minutes depending on the video le
             await self.cleanup_temp_files(audio_file)
             
             # Send transcription
-            max_length = 4096
+            max_length = 4000  # Leave some buffer for formatting
             if len(transcription) > max_length:
                 # Split long transcriptions
-                chunks = [transcription[i:i+max_length] for i in range(0, len(transcription), max_length)]
-                for i, chunk in enumerate(chunks):
-                    if i == 0:
-                        await status_message.edit_text(f"📄 Transcription (Part {i+1}/{len(chunks)}):\n\n{chunk}")
+                chunks = []
+                current_chunk = ""
+                words = transcription.split()
+                
+                for word in words:
+                    if len(current_chunk + " " + word) <= max_length:
+                        current_chunk += (" " + word) if current_chunk else word
                     else:
-                        await message.reply_text(f"📄 Transcription (Part {i+1}/{len(chunks)}):\n\n{chunk}")
+                        if current_chunk:
+                            chunks.append(current_chunk)
+                        current_chunk = word
+                
+                if current_chunk:
+                    chunks.append(current_chunk)
+                
+                # Send chunks
+                for i, chunk in enumerate(chunks):
+                    message_text = f"📄 Transcription (Part {i+1}/{len(chunks)}):\n\n{chunk}"
+                    if i == 0:
+                        await status_message.edit_text(message_text)
+                    else:
+                        await message.reply_text(message_text)
             else:
                 await status_message.edit_text(f"📄 Transcription:\n\n{transcription}")
                 
