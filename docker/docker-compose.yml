@@ -1,0 +1,19 @@
+services:
+  yt-transcript-app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: derogab/yt-transcript-app:latest
+    container_name: yt-transcript-app
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - ../.env
+    networks:
+      - yt-transcript-network
+
+networks:
+  yt-transcript-network:
+    name: yt-transcript-network
+    driver: bridge
