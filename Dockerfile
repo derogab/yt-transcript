@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
     build-essential
 # Copy requirements and install python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
-    && pip install --no-cache-dir -r requirements.txt \
+RUN pip install --upgrade pip setuptools wheel \
+    && pip install -r requirements.txt \
     && apt-get purge -y build-essential \
     && apt-get autoremove -y \
     && apt-get clean \
