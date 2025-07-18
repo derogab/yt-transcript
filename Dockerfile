@@ -1,5 +1,5 @@
 # Base image
-FROM python:3
+FROM python:3-slim
 # Define environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
