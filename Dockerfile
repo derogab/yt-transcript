@@ -7,14 +7,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Set working directory
 WORKDIR /app
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    build-essential
+RUN apt-get update && apt-get install -y ffmpeg
 # Copy requirements and install python dependencies
 COPY requirements.txt .
-RUN pip install --upgrade pip setuptools wheel \
-    && pip install -r requirements.txt \
-    && apt-get purge -y build-essential \
+RUN pip install -r requirements.txt \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
