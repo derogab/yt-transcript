@@ -5,8 +5,6 @@ services:
     image: derogab/yt-transcript-app:latest
     container_name: yt-transcript-app
     restart: unless-stopped
-    environment:
-      - PYTHONUNBUFFERED=1
     env_file:
       - .env
     networks:
