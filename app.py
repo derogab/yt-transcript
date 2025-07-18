@@ -17,7 +17,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-class YouTubeTranscriberBot:
+class YTTranscript:
     def __init__(self):
         self.telegram_token = os.getenv('TELEGRAM_TOKEN')
         if not self.telegram_token:
@@ -127,7 +127,7 @@ class YouTubeTranscriberBot:
     async def start_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle /start command."""
         welcome_message = """
-🤖 Welcome to YouTube Transcript Bot!
+🤖 Welcome to YT-Transcript Bot!
 
 I can help you transcribe YouTube videos. Here's how to use me:
 
@@ -136,7 +136,7 @@ I can help you transcribe YouTube videos. Here's how to use me:
 3. I'll send you back the transcription
 
 Commands:
-/start - Show this help message
+/start - Start and show this message
 /help - Show help information
 
 Just paste a YouTube URL and I'll get started!
@@ -248,7 +248,7 @@ Note: The transcription process may take a few minutes depending on the video le
         application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, self.handle_message))
         
         # Start the bot
-        logger.info("Starting YouTube Transcriber Bot...")
+        logger.info("Starting YT-Transcript Bot...")
         try:
             application.run_polling(drop_pending_updates=True)
         except Exception as e:
@@ -258,7 +258,7 @@ Note: The transcription process may take a few minutes depending on the video le
 def main():
     """Main function."""
     try:
-        bot = YouTubeTranscriberBot()
+        bot = YTTranscript()
         bot.run()
     except Exception as e:
         logger.error(f"Failed to start bot: {e}")
