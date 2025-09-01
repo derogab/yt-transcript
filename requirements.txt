@@ -1,5 +1,5 @@
 python-telegram-bot==22.3
-yt-dlp==2025.7.21
+yt-dlp==2025.8.27
 openai-whisper==20250625
 python-dotenv==1.1.1
 ffmpeg-python==0.2.0
